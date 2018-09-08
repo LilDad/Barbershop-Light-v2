@@ -10,5 +10,5 @@ get '/visit' do
 end
 
 get '/about' do
-  erb :index
+  erb :about
 end
