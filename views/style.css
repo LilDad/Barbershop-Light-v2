@@ -1,3 +1,16 @@
 ::placeholder {
     color: #563d7c;
 }
+
+#row_main {
+    margin-left: 10px;
+    color: #563d7c;
+}
+
+h1{
+    color: #563d7c;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 50px;
+    margin-bottom: 40px;
+}
