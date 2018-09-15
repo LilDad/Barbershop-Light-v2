@@ -2,7 +2,7 @@ require 'rubygems'
 require 'sinatra'
 
 get '/' do
-	erb "Hello! <a href=\"https://github.com/bootstrap-ruby/sinatra-bootstrap\">Original</a> pattern has been modified for <a href=\"http://rubyschool.us/\">Ruby School</a>"			
+	erb :main
 end
 
 get '/contacts' do
@@ -15,4 +15,8 @@ end
 
 get '/visit' do
   erb :visit
+end
+
+get '/test' do
+  erb "404"
 end
