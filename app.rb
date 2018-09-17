@@ -9,6 +9,18 @@ get '/contacts' do
   erb :contacts
 end
 
+post '/contacts' do
+
+  @user_email = params[:user_email]
+  @user_message = params[:user_message]
+
+  output = File.open "./public/contacts.txt", "a+"
+  output.write "User email: #{@user_email}, user message: #{@user_message}\n"
+  output.close
+
+  erb :contacts_confirm
+end
+
 get '/about' do
   erb :about
 end
