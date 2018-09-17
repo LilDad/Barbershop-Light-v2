@@ -33,6 +33,21 @@ get '/test' do
   erb "404"
 end
 
+get '/login' do
+  erb :login
+end
+
+post '/login' do
+  @login = params[:login]
+  @password = params[:password]
+
+  if @login == 'admin' && @password == '123123'
+    erb "Logged"
+  else
+    erb "Access denied!"
+  end
+end
+
 post '/visit' do
   @first_name = params[:first_name]
   @last_name = params[:last_name]
