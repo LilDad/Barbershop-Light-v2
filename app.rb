@@ -15,7 +15,6 @@ end
 
 get '/visit' do
   erb :visit
-
 end
 
 get '/test' do
@@ -25,7 +24,13 @@ end
 post '/visit' do
   @first_name = params[:first_name]
   @last_name = params[:last_name]
-  output = File.open "public/users.txt", "w"
-  output.write @first_name
+  @user_data = params[:user_data]
+  @user_time = params[:user_time]
+  @master = params[:master]
+
+  output = File.open "./public/users.txt", "a+"
+  output.write "First name: #{@first_name}, last name: #{@last_name}, time: #{@user_data }, date: #{@user_time}, master: #{@master}\n"
   output.close
+
+  erb :visit_confirm
 end

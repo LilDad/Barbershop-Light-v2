@@ -51,7 +51,7 @@
     </tbody>
   </table>
 
-  <form>
+  <form action="/visit" method="POST">
     <div class="row" style="margin-left: 10px; color: #563d7c">
 
       <div class="form-group" style="width:300px">
@@ -69,19 +69,19 @@
     <div class="row" style="margin-left: 10px; color: #563d7c">
       <div class="form-group">
         <label>Дата записи</label>
-        <input type="date" class="form-control" style="width:150px" placeholder="Дата и время записи">
+        <input type="date" class="form-control" name="user_data" style="width:150px" placeholder="Дата и время записи">
       </div>
 
       <div class="form-group">
         <label>Время записи</label>
-        <input type="time" class="form-control" style="width:150px" placeholder="Дата и время записи">
+        <input type="time" class="form-control" name="user_time" style="width:150px" placeholder="Дата и время записи">
       </div>
     </div>
 
     <div class="row" style="margin-left: 10px; color: #563d7c; width:150px">
       <div class="form-group">
         <label>Выберите мастера</label>
-        <select class="form-control">
+        <select class="form-control" name="master">
           <option>Leonardo</option>
           <option>Michael</option>
           <option>Dante</option>
