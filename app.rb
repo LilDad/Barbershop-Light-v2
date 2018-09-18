@@ -53,10 +53,10 @@ post '/visit' do
   @last_name = params[:last_name]
   @user_data = params[:user_data]
   @user_time = params[:user_time]
-  @master = params[:master]
+  @barber = params[:barber]
 
   output = File.open "./public/users.txt", "a+"
-  output.write "First name: #{@first_name}, last name: #{@last_name}, time: #{@user_data }, date: #{@user_time}, master: #{@master}\n"
+  output.write "First name: #{@first_name}, last name: #{@last_name}, time: #{@user_data }, date: #{@user_time}, master: #{@barber}\n"
   output.close
 
   erb :visit_confirm
