@@ -1,2 +1,4 @@
 First name: , last name: , time: , date: , master: Leonardo
 First name: , last name: , time: , date: , master: Leonardo
+First name: er, last name: er, time: 2018-09-23, date: 12:02, master: Michael
+First name: er, last name: er, time: 2018-09-23, date: 12:02, master: Michael, hair color: #7bd148

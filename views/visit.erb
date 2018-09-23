@@ -7,10 +7,6 @@
       margin-top: 50px;
       margin-bottom: 40px;}
   </style>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.js"></script>
-  <script src="jquery.simplecolorpicker.js"></script>
-
-  <link rel="stylesheet" href="jquery.simplecolorpicker.css">
 </head>
 
 <body>
@@ -92,27 +88,30 @@
         </select>
       </div>
 
+      <div class="form-group">
+        <label>Choice hair color:</label>
+        <select id="colorpicker" name="colorpicker">
+          <option value="#7bd148">Green</option>
+          <option value="#5484ed">Bold blue</option>
+          <option value="#a4bdfc">Blue</option>
+          <option value="#46d6db">Turquoise</option>
+          <option value="#7ae7bf">Light green</option>
+          <option value="#51b749">Bold green</option>
+          <option value="#fbd75b">Yellow</option>
+          <option value="#ffb878">Orange</option>
+          <option value="#ff887c">Red</option>
+          <option value="#dc2127">Bold red</option>
+          <option value="#dbadff">Purple</option>
+          <option value="#e1e1e1">Gray</option>
+        </select>
+      </div>
+
       <button type="submit" class="btn btn-warning" style="background-color: #ffc823; color: #563d7c; font-weight: bold; border-color: #563d7c">Confirm</button>
     </div>
 
-    <select id="color_pick">
-      <option value="#7bd148">Green</option>
-      <option value="#5484ed">Bold blue</option>
-      <option value="#a4bdfc">Blue</option>
-      <option value="#46d6db">Turquoise</option>
-      <option value="#7ae7bf">Light green</option>
-      <option value="#51b749">Bold green</option>
-      <option value="#fbd75b">Yellow</option>
-      <option value="#ffb878">Orange</option>
-      <option value="#ff887c">Red</option>
-      <option value="#dc2127">Bold red</option>
-      <option value="#dbadff">Purple</option>
-      <option value="#e1e1e1">Gray</option>
-    </select>
   </form>
 
-  <script type="text/javascript" src="/script.js"></script>
-
-  $('#color_pick').simplecolorpicker();
-
+  <script type="text/javascript">
+      $('#colorpicker').simplecolorpicker();
+  </script>
 </body>

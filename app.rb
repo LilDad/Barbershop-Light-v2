@@ -2,7 +2,7 @@ require 'rubygems'
 require 'sinatra'
 
 get '/' do
-	erb :main
+  erb :main
 end
 
 get '/contacts' do
@@ -10,11 +10,10 @@ get '/contacts' do
 end
 
 post '/contacts' do
-
   @user_email = params[:user_email]
   @user_message = params[:user_message]
 
-  output = File.open "./public/contacts.txt", "a+"
+  output = File.open './public/contacts.txt', 'a+'
   output.write "User email: #{@user_email}, user message: #{@user_message}\n"
   output.close
 
@@ -30,7 +29,7 @@ get '/visit' do
 end
 
 get '/test' do
-  erb "404"
+  erb '404'
 end
 
 get '/login' do
@@ -42,9 +41,9 @@ post '/login' do
   @password = params[:password]
 
   if @login == 'admin' && @password == '123123'
-    erb "Logged"
+    erb 'Logged'
   else
-    erb "Access denied!"
+    erb 'Access denied!'
   end
 end
 
@@ -54,9 +53,10 @@ post '/visit' do
   @user_data = params[:user_data]
   @user_time = params[:user_time]
   @barber = params[:barber]
+  @colorpicker = params[:colorpicker]
 
-  output = File.open "./public/users.txt", "a+"
-  output.write "First name: #{@first_name}, last name: #{@last_name}, time: #{@user_data }, date: #{@user_time}, master: #{@barber}\n"
+  output = File.open './public/users.txt', 'a+'
+  output.write "First name: #{@first_name}, last name: #{@last_name}, time: #{@user_data}, date: #{@user_time}, master: #{@barber}, hair color: #{@colorpicker}\n"
   output.close
 
   erb :visit_confirm
