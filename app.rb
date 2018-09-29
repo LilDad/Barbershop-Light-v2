@@ -21,6 +21,7 @@ post '/contacts' do
 end
 
 get '/about' do
+  @error = "testim"
   erb :about
 end
 
@@ -55,9 +56,24 @@ post '/visit' do
   @barber = params[:barber]
   @colorpicker = params[:colorpicker]
 
+
+  hh = {:first_name => 'Enter first name',
+        :last_name => 'Enter last name',
+        :user_data => 'Choice data',
+        :user_time => 'Choice time',
+        :master => 'Choice master',
+        :colorpicker => 'Enter color'}
+
+  hh.each do |key, value|
+    if params[key] == ''
+      @error = hh[key]
+      return erb :visit
+    end
+  end
+
+  erb "Ok, first name is #{@first_name}, last name: #{@last_name}, time: #{@user_data}, date: #{@user_time}, master: #{@barber}, hair color: #{@colorpicker}"
+
   output = File.open './public/users.txt', 'a+'
   output.write "First name: #{@first_name}, last name: #{@last_name}, time: #{@user_data}, date: #{@user_time}, master: #{@barber}, hair color: #{@colorpicker}\n"
   output.close
-
-  erb :visit_confirm
 end
