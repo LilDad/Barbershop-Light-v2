@@ -49,13 +49,13 @@ post '/login' do
 end
 
 post '/visit' do
+
   @first_name = params[:first_name]
   @last_name = params[:last_name]
   @user_data = params[:user_data]
   @user_time = params[:user_time]
   @barber = params[:barber]
   @colorpicker = params[:colorpicker]
-
 
   hh = {:first_name => 'Enter first name',
         :last_name => 'Enter last name',
@@ -64,11 +64,10 @@ post '/visit' do
         :master => 'Choice master',
         :colorpicker => 'Enter color'}
 
-  hh.each do |key, value|
-    if params[key] == ''
-      @error = hh[key]
-      return erb :visit
-    end
+  @error = hh.select {|key,_| params[key] == ""}.velues.join(", ")
+
+  if @error != ''
+    return erb :visit
   end
 
   erb "Ok, first name is #{@first_name}, last name: #{@last_name}, time: #{@user_data}, date: #{@user_time}, master: #{@barber}, hair color: #{@colorpicker}"
