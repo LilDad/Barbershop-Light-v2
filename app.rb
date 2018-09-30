@@ -64,7 +64,7 @@ post '/visit' do
         :master => 'Choice master',
         :colorpicker => 'Enter color'}
 
-  @error = hh.select {|key,_| params[key] == ""}.velues.join(", ")
+  @error = hh.select {|key,_| params[key] == ""}.values.join(", ")
 
   if @error != ''
     return erb :visit
