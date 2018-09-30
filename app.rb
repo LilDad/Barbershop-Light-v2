@@ -21,7 +21,7 @@ post '/contacts' do
 end
 
 get '/about' do
-  @error = "testim"
+  @error = 'testim'
   erb :about
 end
 
@@ -49,7 +49,6 @@ post '/login' do
 end
 
 post '/visit' do
-
   @first_name = params[:first_name]
   @last_name = params[:last_name]
   @user_data = params[:user_data]
@@ -57,22 +56,30 @@ post '/visit' do
   @barber = params[:barber]
   @colorpicker = params[:colorpicker]
 
-  hh = {:first_name => 'Enter first name',
-        :last_name => 'Enter last name',
-        :user_data => 'Choice data',
-        :user_time => 'Choice time',
-        :master => 'Choice master',
-        :colorpicker => 'Enter color'}
+  hh = { first_name: 'Enter first name',
+         last_name: 'Enter last name',
+         user_data: 'Choice data',
+         user_time: 'Choice time',
+         master: 'Choice master',
+         colorpicker: 'Enter color' }
 
-  @error = hh.select {|key,_| params[key] == ""}.values.join(", ")
+  @error = hh.select { |key, _| params[key] == '' }.values.join(', ')
 
-  if @error != ''
-    return erb :visit
-  end
+  return erb :visit if @error != ''
 
-  erb "Ok, first name is #{@first_name}, last name: #{@last_name}, time: #{@user_data}, date: #{@user_time}, master: #{@barber}, hair color: #{@colorpicker}"
+  erb "Ok, first name is #{@first_name},
+           last name: #{@last_name},
+           time: #{@user_data},
+           date: #{@user_time},
+           master: #{@barber},
+           hair color: #{@colorpicker}"
 
   output = File.open './public/users.txt', 'a+'
-  output.write "First name: #{@first_name}, last name: #{@last_name}, time: #{@user_data}, date: #{@user_time}, master: #{@barber}, hair color: #{@colorpicker}\n"
+  output.write "First name: #{@first_name},
+                      last name: #{@last_name},
+                      time: #{@user_data},
+                      date: #{@user_time},
+                      master: #{@barber},
+                      hair color: #{@colorpicker}\n"
   output.close
 end
