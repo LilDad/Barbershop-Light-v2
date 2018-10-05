@@ -62,12 +62,12 @@
 
       <div class="form-group" style="width:300px">
         <label>First name</label>
-        <input name="first_name" type="text" class="form-control" placeholder="First name" value="<%=@first_name%>">
+        <input name="first_name" type="text" class="form-control" placeholder="First name" value="<%= @first_name %>">
       </div>
 
       <div class="form-group" style="width:300px">
         <label>Last name</label>
-        <input name="last_name" type="text" class="form-control" placeholder="Last name" value="<%=@last_name%>">
+        <input name="last_name" type="text" class="form-control" placeholder="Last name" value="<%= @last_name %>">
       </div>
 
     </div>
@@ -75,28 +75,28 @@
     <div class="row" style="margin-left: 10px; color: #563d7c">
       <div class="form-group">
         <label>Дата записи</label>
-        <input type="date" class="form-control" name="user_data" style="width:150px" placeholder="Дата и время записи" value="<%=@user_data%>">
+        <input type="date" class="form-control" name="user_data" style="width:150px" placeholder="Дата и время записи" value="<%= @user_data %>">
       </div>
 
       <div class="form-group">
         <label>Время записи</label>
-        <input type="time" class="form-control" name="user_time" style="width:150px" placeholder="Дата и время записи" value="<%=@user_time%>">
+        <input type="time" class="form-control" name="user_time" style="width:150px" placeholder="Дата и время записи" value="<%= @user_time %>">
       </div>
     </div>
 
     <div class="row" style="margin-left: 10px; color: #563d7c; width:150px">
       <div class="form-group">
         <label>Выберите мастера</label>
-        <select name="barber" class="form-control" value="<%=@master%>">
-          <option>Leonardo</option>
-          <option>Michael</option>
-          <option>Dante</option>
+        <select name="barber" class="form-control" value="<%= @master %>">
+          <option <%= @barber == 'Jessie Pinkman' ? 'selected' : '' %>>Jessie Pinkman</option>
+          <option <%= @barber == 'Gus Fring' ? 'selected' : '' %>>Gus Fring</option>
+          <option <%= @barber == 'Walter White' ? 'selected' : '' %>>Walter White</option>
         </select>
       </div>
 
       <div class="form-group">
         <label>Choice hair color:</label>
-        <select id="colorpicker" name="colorpicker" value="<%=@colorpicker%>">
+        <select id="colorpicker" name="colorpicker" value="<%= @colorpicker %>">
           <option value="#7bd148">Green</option>
           <option value="#5484ed">Bold blue</option>
           <option value="#a4bdfc">Blue</option>
