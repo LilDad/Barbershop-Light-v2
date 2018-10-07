@@ -84,7 +84,8 @@ post '/visit' do
 
   return erb :visit if @error != ''
 
-  @db.execute 'insert into users (first_name, last_name, date, time, barber, color) values (?, ?, ?, ?, ?, ?)', [@first_name, @last_name, @user_date, @user_time, @barber, @colorpicker]
+  @db.execute 'insert into users (first_name, last_name, date, time, barber, color) values (?, ?, ?, ?, ?, ?)',
+              [@first_name, @last_name, @user_date, @user_time, @barber, @colorpicker]
 
   erb "Ok, first name is #{@first_name},
            last name: #{@last_name},
@@ -93,12 +94,12 @@ post '/visit' do
            master: #{@barber},
            hair color: #{@colorpicker}"
 
-  #output = File.open './public/users.txt', 'a+'
-  #output.write "First name: #{@first_name},
+  # output = File.open './public/users.txt', 'a+'
+  # output.write "First name: #{@first_name},
   #                    last name: #{@last_name},
   #                    time: #{@user_date},
   #                    date: #{@user_time},
   #                    master: #{@barber},
   #                    hair color: #{@colorpicker}\n"
-  #output.close
+  # output.close
 end
