@@ -15,8 +15,7 @@ configure do
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "first_name" VARCHAR,
     "last_name" VARCHAR,
-    "date" VARCHAR,
-    "time" VARCHAR,
+    "datetime" VARCHAR,
     "barber" VARCHAR,
     "color" VARCHAR
     )'
@@ -72,15 +71,13 @@ end
 post '/visit' do
   @first_name = params[:first_name]
   @last_name = params[:last_name]
-  @user_date = params[:user_date]
-  @user_time = params[:user_time]
+  @user_datetime = params[:user_datetime]
   @barber = params[:barber]
   @colorpicker = params[:colorpicker]
 
   hh = { first_name: 'Enter first name',
          last_name: 'Enter last name',
-         user_data: 'Choice date',
-         user_time: 'Choice time',
+         user_datetime: 'Choice date and time',
          master: 'Choice master',
          colorpicker: 'Enter color' }
 
@@ -89,13 +86,12 @@ post '/visit' do
   return erb :visit if @error != ''
 
   db = get_db
-  db.execute 'insert into users (first_name, last_name, date, time, barber, color) values (?, ?, ?, ?, ?, ?)',
-              [@first_name, @last_name, @user_date, @user_time, @barber, @colorpicker]
+  db.execute 'insert into users (first_name, last_name, datetime, barber, color) values (?, ?, ?, ?, ?)',
+              [@first_name, @last_name, @user_datetime, @barber, @colorpicker]
 
   erb "Ok, first name is #{@first_name},
            last name: #{@last_name},
-           time: #{@user_date},
-           date: #{@user_time},
+           date and time: #{@user_datetime},
            master: #{@barber},
            hair color: #{@colorpicker}"
 

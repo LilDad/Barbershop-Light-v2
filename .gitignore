@@ -40,3 +40,5 @@ build/
 Barbershop\.db
 
 node_modules/
+
+public/
