@@ -38,3 +38,5 @@ build/
 \.idea/
 
 Barbershop\.db
+
+node_modules/
