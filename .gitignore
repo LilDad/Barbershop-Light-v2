@@ -42,3 +42,7 @@ Barbershop\.db
 node_modules/
 
 public/
+
+npm-debug\.log
+
+package\.json
