@@ -7,13 +7,13 @@ def get_db
   SQLite3::Database.new 'Barbershop.sqlite'
 end
 
-def if_barber_exist? db, name
-  db.execute('select * from Barbers where barber_name=?', [name]).length > 0
+def if_barber_exist?(db, name)
+  !db.execute('select * from Barbers where barber_name=?', [name]).empty?
 end
 
-def seed_db db, barbers
+def seed_db(db, barbers)
   barbers.each do |barber|
-    if !if_barber_exist? db, barber
+    unless if_barber_exist? db, barber
       db.execute 'insert into Barbers (barber_name) values (?)', [barber]
     end
   end
@@ -115,7 +115,7 @@ post '/visit' do
 
   db = get_db
   db.execute 'insert into Users (first_name, last_name, datetime, barber, color) values (?, ?, ?, ?, ?)',
-              [@first_name, @last_name, @user_datetime, @barber, @colorpicker]
+             [@first_name, @last_name, @user_datetime, @barber, @colorpicker]
 
   erb "Ok, first name is #{@first_name},
            last name: #{@last_name},
