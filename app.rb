@@ -7,10 +7,22 @@ def get_db
   SQLite3::Database.new 'Barbershop.sqlite'
 end
 
+def if_barber_exist? db, name
+  db.execute('select * from Barbers where barber_name=?', [name]).length > 0
+end
+
+def seed_db db, barbers
+  barbers.each do |barber|
+    if !if_barber_exist? db, barber
+      db.execute 'insert into Barbers (barber_name) values (?)', [barber]
+    end
+  end
+end
+
 configure do
   db = get_db
   db.execute 'CREATE TABLE IF NOT EXISTS
-    "users"
+    "Users"
     (
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "first_name" VARCHAR,
@@ -19,6 +31,14 @@ configure do
     "barber" VARCHAR,
     "color" VARCHAR
     )'
+  db.execute 'CREATE TABLE IF NOT EXISTS
+    "Barbers"
+    (
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "barber_name" VARCHAR,
+    CONSTRAINT UC_Barbers UNIQUE (barber_name)
+    )'
+  seed_db db, ['Jessie Pinkman', 'Walter White', 'Gus Fring', 'Mike Ehrmantraut']
 end
 
 get '/' do
@@ -59,10 +79,10 @@ end
 
 get '/showusers' do
   db = get_db
+  db.results_as_hash = true
+  @results = db.execute 'select * from Users order by id desc --;'
 
-  @results = db.execute 'select * from users order by id desc --;'
-
-    erb :showusers
+  erb :showusers
 end
 
 post '/login' do
@@ -94,7 +114,7 @@ post '/visit' do
   return erb :visit if @error != ''
 
   db = get_db
-  db.execute 'insert into users (first_name, last_name, datetime, barber, color) values (?, ?, ?, ?, ?)',
+  db.execute 'insert into Users (first_name, last_name, datetime, barber, color) values (?, ?, ?, ?, ?)',
               [@first_name, @last_name, @user_datetime, @barber, @colorpicker]
 
   erb "Ok, first name is #{@first_name},

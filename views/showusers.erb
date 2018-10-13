@@ -1,21 +1,22 @@
-
-
-
-<table class="table">
-
+<table class="table table-striped">
+  <thead>
   <tr>
-    <td>a</td>
-    <td>b</td>
+    <th scope="col">First Name</th>
+    <th scope="col">Last Name</th>
+    <th scope="col">Date/Time</th>
+    <th scope="col">Barber</th>
+    <th scope="col">Color</th>
   </tr>
-
-  <tr>
-    <td>a</td>
-    <td>b</td>
-  </tr>
-
-  <tr>
-    <td>a</td>
-    <td>b</td>
-  </tr>
-
+  </thead>
+  <% @results.each do |row| %>
+    <tbody>
+      <tr>
+        <td><%= row['first_name'] %></td>
+        <td><%= row['last_name'] %></td>
+        <td><%= row['datetime'] %></td>
+        <td><%= row['barber'] %></td>
+        <td><%= row['color'] %></td>
+      </tr>
+    </tbody>
+  <% end %>
 </table>
