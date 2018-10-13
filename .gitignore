@@ -46,3 +46,9 @@ public/
 npm-debug\.log
 
 package\.json
+
+test\.sqlite
+
+test\.rb
+
+Barbershop\.sqlite

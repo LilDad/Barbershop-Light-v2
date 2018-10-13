@@ -57,6 +57,14 @@ get '/login' do
   erb :login
 end
 
+get '/showusers' do
+  db = get_db
+
+  @results = db.execute 'select * from users order by id desc --;'
+
+    erb :showusers
+end
+
 post '/login' do
   @login = params[:login]
   @password = params[:password]
