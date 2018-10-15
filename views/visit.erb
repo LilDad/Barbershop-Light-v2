@@ -81,10 +81,10 @@
     <div class="row" style="margin-left: 10px; color: #563d7c; width:150px">
       <div class="form-group">
         <label>Выберите мастера</label>
-        <select name="barber" class="form-control" value="<%= @master %>">
-          <option <%= @barber == 'Jessie Pinkman' ? 'selected' : '' %>>Jessie Pinkman</option>
-          <option <%= @barber == 'Gus Fring' ? 'selected' : '' %>>Gus Fring</option>
-          <option <%= @barber == 'Walter White' ? 'selected' : '' %>>Walter White</option>
+        <select name="barber" class="form-control">
+          <% @barbers_results.each do |row| %>
+            <option <%= @barber == row['barber_name'] ? 'selected' : '' %>><%= row['barber_name'] %></option>
+          <% end %>
         </select>
       </div>
 

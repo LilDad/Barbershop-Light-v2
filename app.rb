@@ -19,6 +19,13 @@ def seed_db(db, barbers)
   end
 end
 
+before do
+  db = get_db
+  db.results_as_hash = true
+  @barbers_results = db.execute 'select * from Barbers;'
+
+end
+
 configure do
   db = get_db
   db.execute 'CREATE TABLE IF NOT EXISTS
@@ -65,10 +72,6 @@ get '/about' do
   erb :about
 end
 
-get '/visit' do
-  erb :visit
-end
-
 get '/test' do
   erb '404'
 end
@@ -96,6 +99,10 @@ post '/login' do
   end
 end
 
+get '/visit' do
+  erb :visit
+end
+
 post '/visit' do
   @first_name = params[:first_name]
   @last_name = params[:last_name]
@@ -106,7 +113,7 @@ post '/visit' do
   hh = { first_name: 'Enter first name',
          last_name: 'Enter last name',
          user_datetime: 'Choice date and time',
-         master: 'Choice master',
+         barber: 'Choice master',
          colorpicker: 'Enter color' }
 
   @error = hh.select { |key, _| params[key] == '' }.values.join(', ')
@@ -120,15 +127,6 @@ post '/visit' do
   erb "Ok, first name is #{@first_name},
            last name: #{@last_name},
            date and time: #{@user_datetime},
-           master: #{@barber},
+           barber: #{@barber},
            hair color: #{@colorpicker}"
-
-  # output = File.open './public/users.txt', 'a+'
-  # output.write "First name: #{@first_name},
-  #                    last name: #{@last_name},
-  #                    time: #{@user_date},
-  #                    date: #{@user_time},
-  #                    master: #{@barber},
-  #                    hair color: #{@colorpicker}\n"
-  # output.close
 end
