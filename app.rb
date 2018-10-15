@@ -23,7 +23,6 @@ before do
   db = get_db
   db.results_as_hash = true
   @barbers_results = db.execute 'select * from Barbers;'
-
 end
 
 configure do
